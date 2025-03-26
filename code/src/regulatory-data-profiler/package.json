@@ -1,0 +1,82 @@
+{
+  "name": "regulatory-data-profiler",
+  "displayName": "Regulatory Data Profiler",
+  "description": "Extracts and generates rules from regulatory PDF documents",
+  "version": "0.0.1",
+  "publisher": "TO_W.W",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:regulatoryDataProfilerView"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "regulatory-data-profiler.showProfiler",
+        "title": "Show Regulatory Data Profiler",
+        "icon": {
+          "light": "./icons/profiler-light.svg",
+          "dark": "./icons/profiler-dark.svg"
+        }
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "regulatory-data-profiler-container",
+          "title": "Regulatory Data Profiler",
+          "icon": "icons/profiler-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "regulatory-data-profiler-container": [
+        {
+          "id": "regulatoryDataProfilerView",
+          "name": "Profiler",
+          "icon": "icons/profiler-icon.svg",
+          "contextualTitle": "Regulatory Data Profiler"
+        }
+      ]
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "regulatory-data-profiler.showProfiler",
+          "when": "true"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "regulatory-data-profiler.showProfiler",
+          "when": "view == regulatoryDataProfilerView",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/node": "^20.11.30",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//regulatory-data-profiler.git"
+  },
+  "license": "MIT"
+}
